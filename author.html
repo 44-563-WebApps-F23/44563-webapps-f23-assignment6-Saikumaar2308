@@ -41,3 +41,37 @@
     }
 </script>
 
+<!--Part 4-->
+<div id="image-container">
+    <img id="city-image" src="Ahmedabad.jpg" alt="Ahmedabad" width="100" height="100" onclick="selectImage()">
+</div>
+
+<script>
+    let Image = 1;
+
+    function selectImage(){
+        const cityImg = document.getElementById("city-image");
+
+        switch(Image){
+            case 1:
+                cityImg.src = "Ahmedabad.jpg";
+                Image = 2;
+                break;
+            case 2:
+                cityImg.src = "mumbai.jpg";
+                Image = 3;
+                break;
+            case 3:
+                cityImg.src = "suratcity.jpg";
+                Image = 1;
+                break;
+        }
+    }
+</script>
+
+<!--Part 5-->
+
+
+</body>
+</html> 
+
