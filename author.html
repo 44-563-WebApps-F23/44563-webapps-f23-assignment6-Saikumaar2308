@@ -1,7 +1,41 @@
 <!DOCTYPE html>
 <html>
  <title>Author PAge</title>
- <head>Author Entry Sai kumar Maram</head>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+ <head>
+   <h1>Author Entry Sai kumar Maram</h1> 
+</head>
+<style>
+    body {
+           padding: 20px;
+           background-color: aliceblue;
+       }
+
+       form {
+           max-width: 400px;
+           margin: auto;
+       }
+   .custom-btn {
+           width: 50%;
+           margin-top: 10px;
+       }
+       .form-control {
+           border: 2px solid #007bff; 
+           color: #007bff; 
+           border-radius: 5px;
+           margin-bottom: 10px;
+       }
+       form-control:focus {
+           border-color: #0056b3; 
+           box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+       }
+       .form-group label {
+           font-weight: bold;
+           color: #f55a07; /* Blue text color */
+       }
+</style>
+
 <body>
 
 <h2>Getting input</h2>
@@ -9,21 +43,28 @@
 
 
 <form>
+    <div class="form-group">
     <label for="secretAuthor">The hidden author name:</label>
     <input type="password" id="secretAuthor" value="Dickens" required><br><br>
 
     <label for="guessAuthor">Guess the author:</label>
     <input type="text" id="guessAuthor" required><br><br>
-
+</div>
     <input type="button" value="Check the guess" onclick="checkAuthor()"><br><br>
+    
     <p id="result"></p>
 
 
 </form>
 
+<div class="alert alert-warning mt-3" id="outOfGuesses" style="display:none;">
+    Sorry, ran out of guesses.
+</div>
+
 <script>
     let good = 0;
     let oops = 0;
+    let incorrectCount=0;
 
     function checkAuthor() {
         const secretAuthorInput = document.getElementById('secretAuthor').value;
@@ -35,9 +76,17 @@
         } else {
             oops++;
             alert("Sorry");
+            incorrectCount++;
+
         }
         const resultElement = document.getElementById('result');
         resultElement.innerHTML = `Correct Guesses: ${good} | Incorrect Guesses: ${oops}`;
+        if (incorrectCount === 7) {
+                    document.getElementById("outOfGuesses").style.display = "block";
+                    document.getElementById("checkGuessButton").onclick = function () {
+                        alert("Sorry, ran out of guesses.");
+                    }
+        }
     }
 </script>
 
@@ -69,7 +118,7 @@
     }
 </script>
 
-<!--Part 5-->
+
 
 
 </body>
